@@ -1,5 +1,29 @@
 main {
-  flex-grow: 1;
   margin-top: 2rem;
   margin-left: 4rem;
+  width: 100%;
+}
+.container {
+  max-height: calc(100vh - 100px);
+  display: flex;
+  gap: 2rem;
+}
+
+.daily-activity-chart {
+  background-color: #fbfbfb;
+  height: 50%;
+}
+// .objective-score-chart {
+//   background-color: #fbfbfb;
+// }
+.charts__flex {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 50%;
+  div {
+    width: 30%;
+  }
 }

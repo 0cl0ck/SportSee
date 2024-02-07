@@ -24,11 +24,22 @@ function DailyActivityChart({ data }) {
             verticalAlign="top"
             align="center"
           />
-          <Bar dataKey="calories" fill="#FF0000" />
-          <Bar dataKey="poids" fill="#000000" />
+
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
+          <Bar
+            dataKey="calories"
+            fill="#FF0000"
+            barSize={10}
+            radius={[10, 10, 0, 0]}
+          />
+          <Bar
+            dataKey="poids"
+            fill="#000000"
+            barSize={10}
+            radius={[10, 10, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
