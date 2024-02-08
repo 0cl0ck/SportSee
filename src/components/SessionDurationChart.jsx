@@ -20,7 +20,7 @@ const CustomTooltip = ({ active, payload, label }) => {
           border: "1px solid #ccc",
         }}
       >
-        <label>{` ${payload[0].value} min`}</label>
+        <label>{`${payload[0].value} min`}</label>
       </div>
     );
   }
@@ -36,8 +36,9 @@ const CustomCursor = (props) => {
     <rect
       x={x}
       y={0}
+      rx={5}
       width={width - x}
-      height={1000}
+      height={300}
       fill="rgba(0, 0, 0, 0.2)"
     />
   );
@@ -53,11 +54,11 @@ const SessionDurationChart = ({ data }) => {
 
   return (
     <div className="session-duration-chart">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={data}
           margin={{ top: 30, right: 0, left: 0, bottom: 40 }}
-          style={{ backgroundColor: "#FF0000" }}
+          style={{ backgroundColor: "#FF0000", borderRadius: "5px" }}
           onMouseEnter={handleChartReady}
         >
           <XAxis
