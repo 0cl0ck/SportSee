@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -6,8 +6,6 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  ReferenceArea,
-  CartesianGrid,
 } from "recharts";
 import "./SessionDurationChart.scss";
 
@@ -18,11 +16,11 @@ const CustomTooltip = ({ active, payload, label }) => {
         className="custom-tooltip"
         style={{
           backgroundColor: "#fff",
-          padding: "20px",
+          padding: "17px",
           border: "1px solid #ccc",
         }}
       >
-        <label>{`${label} : ${payload[0].value} min`}</label>
+        <label>{` ${payload[0].value} min`}</label>
       </div>
     );
   }
@@ -30,68 +28,67 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const SessionDurationChart = ({ data }) => {
-  const [activeIndex, setActiveIndex] = useState(null); // Nouvel état pour l'index actif
+// Custom cursor component
+const CustomCursor = (props) => {
+  const { height, points, width } = props;
+  const x = points[0].x;
+  return (
+    <rect
+      x={x}
+      y={0}
+      width={width - x}
+      height={1000}
+      fill="rgba(0, 0, 0, 0.2)"
+    />
+  );
+};
 
-  const handleMouseMove = (state) => {
-    if (state.isTooltipActive) {
-      setActiveIndex(state.activeTooltipIndex); // Mettre à jour l'état lorsque la souris est sur un point
-    } else {
-      setActiveIndex(null); // Réinitialiser lorsqu'elle n'est pas sur un point
-    }
+const SessionDurationChart = ({ data }) => {
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  const handleChartReady = (e) => {
+    // Get the width of the chart for the cursor calculation
+    setContainerWidth(e.containerWidth);
   };
+
   return (
     <div className="session-duration-chart">
-      <ResponsiveContainer width={300} height={300}>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          style={{ backgroundColor: "#FF0000" }}
           data={data}
-          onMouseMove={handleMouseMove}
-          margin={{
-            top: 30,
-            right: 0,
-            left: 0,
-            bottom: 40,
-          }}
+          margin={{ top: 30, right: 0, left: 0, bottom: 40 }}
+          style={{ backgroundColor: "#FF0000" }}
+          onMouseEnter={handleChartReady}
         >
           <XAxis
             dataKey="day"
             axisLine={false}
             tickLine={false}
-            tickMargin={40}
-            tickCount={7}
-            tick={{ fill: "#fff", fontSize: 10 }}
+            tickMargin={10}
+            tick={{ fill: "#fff", fontSize: 12 }}
             padding={{ left: 10, right: 10 }}
-            minTickGap={1}
           />
           <YAxis
             axisLine={false}
             tickLine={false}
             type="number"
             domain={["dataMin", "dataMax + 30"]}
-            hide="true"
+            hide={true}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
           <Line
             type="natural"
             dataKey="activityDuration"
             stroke="#FFF"
-            strokeWidth={1}
+            strokeWidth={2}
             dot={false}
             activeDot={{
               fill: "#fff",
               r: 5,
-              strokeWidth: 10,
-              strokeOpacity: 0.4,
+              strokeWidth: 2,
+              strokeOpacity: 0.3,
             }}
           />
-          {activeIndex !== null && (
-            <ReferenceArea
-              x1={data[activeIndex].day}
-              x2={data[data.length - 1].day}
-              strokeOpacity={0.3}
-            />
-          )}
         </LineChart>
       </ResponsiveContainer>
     </div>
