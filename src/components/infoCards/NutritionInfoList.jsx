@@ -1,6 +1,6 @@
 import React from "react";
 import NutritionInfoCard from "./NutritionInfoCard";
-import "./NutritionInfoList.scss";
+import "../../sass/components/_nutritionInfoList.scss";
 const NutritionInfoList = ({ data }) => {
   console.log(data);
   return (

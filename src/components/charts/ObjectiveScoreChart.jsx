@@ -12,7 +12,7 @@ import {
 const RadialScoreChart = ({ data }) => {
   return (
     <div className="objective-score-chart">
-      <ResponsiveContainer width={300} height={300}>
+      <ResponsiveContainer width={258} height={263}>
         <RadialBarChart
           innerRadius="70%"
           outerRadius="83%"

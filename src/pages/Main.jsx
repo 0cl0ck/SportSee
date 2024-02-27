@@ -1,19 +1,18 @@
 import React from "react";
-import "./Main.scss";
-import NutritionInfoCard from "./NutritionInfoCard.jsx";
-import NutritionInfoList from "./NutritionInfoList.jsx";
-import GreetingHeader from "./GreetingHeader";
-import DailyActivityChart from "./DailyActivityChart.jsx";
-import ObjectiveScoreChart from "./ObjectiveScoreChart.jsx";
-import SessionDurationChart from "./SessionDurationChart.jsx";
-import IntensityChart from "./IntensityChart.jsx";
+import "../sass/pages/_main.scss";
+import NutritionInfoList from "../components/infoCards/NutritionInfoList.jsx";
+import GreetingHeader from "../components/GreetingHeader/GreetingHeader.jsx";
+import DailyActivityChart from "../components/charts/DailyActivityChart.jsx";
+import ObjectiveScoreChart from "../components/charts/ObjectiveScoreChart.jsx";
+import SessionDurationChart from "../components/charts/SessionDurationChart.jsx";
+import IntensityChart from "../components/charts/IntensityChart.jsx";
 import {
   dailyActivityDataMock,
   activityDataMock,
   intensityDataMock,
   objectiveScoreDataMock,
   nutritionData,
-} from "./dataMock.js";
+} from "../components/dataMock.js";
 
 function Main() {
   return (

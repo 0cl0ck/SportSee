@@ -1,7 +1,7 @@
 .sidebar {
   position: absolute;
   top: 0;
-  bottom: -15px;
+  bottom: 0;
   display: flex;
   justify-content: space-evenly;
   align-content: center;
@@ -20,7 +20,7 @@
 
 .layout {
   position: relative;
-  // height: calc(100vh - 100px);
+  height: calc(100vh - 100px);
 }
 .nav-menu {
   margin: 0;

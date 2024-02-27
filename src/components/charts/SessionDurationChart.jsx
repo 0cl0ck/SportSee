@@ -7,17 +7,18 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import "./SessionDurationChart.scss";
-
-const CustomTooltip = ({ active, payload, label }) => {
+import "../../sass/components/_sessionDurationChart.scss";
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div
         className="custom-tooltip"
         style={{
           backgroundColor: "#fff",
-          padding: "17px",
+          padding: "10px",
           border: "1px solid #ccc",
+          width: "50px",
+          fontSize: "12px",
         }}
       >
         <label>{`${payload[0].value} min`}</label>
@@ -54,19 +55,22 @@ const SessionDurationChart = ({ data }) => {
 
   return (
     <div className="session-duration-chart">
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width={258} height={263}>
         <LineChart
           data={data}
-          margin={{ top: 30, right: 0, left: 0, bottom: 40 }}
-          style={{ backgroundColor: "#FF0000", borderRadius: "5px" }}
+          margin={{ top: 80, right: 0, left: 0, bottom: 40 }}
+          style={{
+            backgroundColor: "#FF0000",
+            borderRadius: "5px",
+          }}
           onMouseEnter={handleChartReady}
         >
           <XAxis
             dataKey="day"
             axisLine={false}
             tickLine={false}
-            tickMargin={10}
-            tick={{ fill: "#fff", fontSize: 12 }}
+            tickMargin={30}
+            tick={{ fill: "#ff8080", fontSize: 14 }}
             padding={{ left: 10, right: 10 }}
           />
           <YAxis
@@ -77,10 +81,16 @@ const SessionDurationChart = ({ data }) => {
             hide={true}
           />
           <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ff8080" />
+              <stop offset="100%" stopColor="#fff" />
+            </linearGradient>
+          </defs>
           <Line
             type="natural"
             dataKey="activityDuration"
-            stroke="#FFF"
+            stroke="url(#colorUv)"
             strokeWidth={2}
             dot={false}
             activeDot={{
@@ -90,6 +100,24 @@ const SessionDurationChart = ({ data }) => {
               strokeOpacity: 0.3,
             }}
           />
+          <text
+            x="35%"
+            y="20%"
+            textAnchor="middle"
+            className="session-duration-chart__text"
+            fill="#ff8080"
+          >
+            Durée moyenne des
+          </text>
+          <text
+            x="23%"
+            y="30%"
+            textAnchor="middle"
+            className="session-duration-chart__text"
+            fill="#ff8080"
+          >
+            sessions
+          </text>
         </LineChart>
       </ResponsiveContainer>
     </div>

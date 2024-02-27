@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./components/Navbar.jsx";
-import "./global.scss";
-import Aside from "./components/Aside.jsx";
-import Main from "./components/Main.jsx";
+import Navbar from "./layout/Header/Navbar.jsx";
+import "./sass/global.scss";
+import Aside from "./layout/Aside/Aside.jsx";
+import Main from "./pages/Main.jsx";
 
 function App() {
   return (

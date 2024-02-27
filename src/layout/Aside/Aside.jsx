@@ -1,6 +1,6 @@
 import React from "react";
-import IconLink from "./IconLink";
-import "./Aside.scss";
+import IconLink from "./IconLink.jsx";
+import "../../sass/layout/_aside.scss";
 
 function Aside() {
   return (

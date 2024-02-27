@@ -8,8 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import "./DailyActivityChart.scss";
-
+import "../../sass/components/_dailyActivityChart.scss";
 function DailyActivityChart({ data }) {
   return (
     <div className="daily-activity-chart">

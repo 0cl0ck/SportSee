@@ -1,6 +1,5 @@
 import React from "react";
-import "./GreetingHeader.scss";
-
+import "../../sass/components/_greetingHeader.scss";
 function GreetingHeader({ name }) {
   return (
     <header className="greeting-header">
