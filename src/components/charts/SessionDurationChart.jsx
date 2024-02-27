@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../../sass/components/_sessionDurationChart.scss";
+
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
