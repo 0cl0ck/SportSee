@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../../sass/components/_sessionDurationChart.scss";
+import useResponsiveChart from "../../hooks/resize/useResponsiveDimensions";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -50,13 +51,13 @@ const SessionDurationChart = ({ data }) => {
   const [containerWidth, setContainerWidth] = useState(0);
 
   const handleChartReady = (e) => {
-    // Get the width of the chart for the cursor calculation
     setContainerWidth(e.containerWidth);
   };
+  const { width, height } = useResponsiveChart(258, 263, 200, 200); // Exemple, ajustez selon les besoins
 
   return (
     <div className="session-duration-chart">
-      <ResponsiveContainer width={258} height={263}>
+      <ResponsiveContainer width={width} height={height}>
         <LineChart
           data={data}
           margin={{ top: 80, right: 0, left: 0, bottom: 40 }}

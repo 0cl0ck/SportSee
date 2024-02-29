@@ -8,18 +8,22 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import useResponsiveChart from "../../hooks/resize/useResponsiveDimensions";
+
 const IntensityChart = ({ data }) => {
+  const { width, height } = useResponsiveChart(258, 263, 200, 200);
+
   return (
     <div
       style={{ background: "#333", borderRadius: "5px" }}
       className="intensity-chart"
     >
-      <ResponsiveContainer width={258} height={263}>
-        <RadarChart cx="60%" cy="50%" outerRadius="70%" data={data}>
+      <ResponsiveContainer width={width} height={height}>
+        <RadarChart cx="50%" cy="50%" outerRadius="60%" data={data}>
           <PolarGrid stroke="#fff" />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: "#fff", fontSize: 16 }}
+            tick={{ fill: "#fff", fontSize: 14 }}
           />
           <Radar
             name="Mike"

@@ -4,7 +4,7 @@ import "../../sass/components/_nutritionInfoList.scss";
 const NutritionInfoList = ({ data }) => {
   console.log(data);
   return (
-    <div className="nutritionList__container">
+    <div className="dashboard-cards__container">
       {data.map((item) => (
         <NutritionInfoCard
           key={item.id}

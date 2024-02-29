@@ -20,5 +20,9 @@ nav {
   top: 0; // Positionne la navbar en haut
   left: 0; // Alignée à gauche
   right: 0; // Et à droite pour s'étendre sur toute la largeur
-  z-index: 100; // S'assure que la navbar est au-dessus des autres éléments
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  height: 100px;
 }

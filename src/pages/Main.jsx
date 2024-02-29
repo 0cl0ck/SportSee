@@ -1,5 +1,5 @@
 import React from "react";
-import "../sass/pages/_main.scss";
+import "../sass/pages/_dashboard.scss";
 import NutritionInfoList from "../components/infoCards/NutritionInfoList.jsx";
 import GreetingHeader from "../components/GreetingHeader/GreetingHeader.jsx";
 import DailyActivityChart from "../components/charts/DailyActivityChart.jsx";
@@ -18,18 +18,16 @@ function Main() {
   return (
     <main>
       <GreetingHeader name="John Doe" />
-      <div className="container">
-        <div className="charts__container">
+      <div className="dashboard">
+        <div className="dashboard-charts__container">
           <DailyActivityChart data={dailyActivityDataMock} />
-          <div className="charts__flex">
+          <div className="dashboard-charts__flex">
             <SessionDurationChart data={activityDataMock} />
             <IntensityChart data={intensityDataMock} />
             <ObjectiveScoreChart data={objectiveScoreDataMock} />
           </div>
         </div>
-        <div className="nutritionInfoCard__Container">
-          <NutritionInfoList data={nutritionData} />
-        </div>
+        <NutritionInfoList data={nutritionData} />
       </div>
     </main>
   );

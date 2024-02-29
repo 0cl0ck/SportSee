@@ -9,10 +9,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../../sass/components/_dailyActivityChart.scss";
+
+import useResponsiveChart from "../../hooks/resize/useResponsiveDimensions";
+
 function DailyActivityChart({ data }) {
+  const { width, height } = useResponsiveChart("100%", 250, "100%", 200);
+
   return (
     <div className="daily-activity-chart">
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width={width} height={height}>
         <BarChart
           data={data}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}

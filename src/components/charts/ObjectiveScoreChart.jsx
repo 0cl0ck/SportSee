@@ -9,10 +9,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import "../../sass/components/_objectiveScoreChart.scss";
+import useResponsiveChart from "../../hooks/resize/useResponsiveDimensions";
+
 const RadialScoreChart = ({ data }) => {
+  const { width, height } = useResponsiveChart(258, 263, 200, 200); // Exemple, ajustez selon les besoins
+
   return (
     <div className="objective-score-chart">
-      <ResponsiveContainer width={258} height={263}>
+      <ResponsiveContainer width={width} height={height}>
         <RadialBarChart
           innerRadius="70%"
           outerRadius="83%"
@@ -20,10 +25,10 @@ const RadialScoreChart = ({ data }) => {
           startAngle={90}
           endAngle={450}
           data={data}
-          cx="55%"
-          cy="45%"
+          cx="50%"
+          cy="50%"
         >
-          <circle cx="55%" cy="40%" fill="white" r="80"></circle>
+          <circle cx="50%" cy="50%" fill="white" r="80"></circle>
           <PolarAngleAxis
             type="number"
             dataKey="value"
@@ -33,7 +38,7 @@ const RadialScoreChart = ({ data }) => {
           />
           <RadialBar dataKey="value" cornerRadius={10} fill="#ff0000" />
           <text
-            x="55%"
+            x="50%"
             y="40%"
             textAnchor="middle"
             className="scoreContainer__score"
@@ -42,7 +47,7 @@ const RadialScoreChart = ({ data }) => {
           </text>
           //!TODO: Replace 12% with data
           <text
-            x="55%"
+            x="50%"
             y="50%"
             textAnchor="middle"
             fill={"#74798C"}
@@ -51,7 +56,7 @@ const RadialScoreChart = ({ data }) => {
             de votre
           </text>
           <text
-            x="55%"
+            x="50%"
             y="60%"
             textAnchor="middle"
             fill={"#74798C"}

@@ -3,20 +3,13 @@ import React from "react";
 function NutritionInfoCard(data) {
   console.log(data.bgColor);
   return (
-    <div className="nutrition__container">
-      <div
-        className="nutrition__icon--container"
-        style={{ backgroundColor: data.bgColor }}
-      >
-        <img
-          src={data.iconPath}
-          alt="nutrition icon"
-          className="nutrition__icon"
-        />
+    <div className="card__container">
+      <div className="card__icon" style={{ backgroundColor: data.bgColor }}>
+        <img src={data.iconPath} alt="card icon" className="card__icon--img" />
       </div>
-      <div className="nutrition__info">
-        <p className="nutrition__value"> {data.value} </p>
-        <p className="nutrition__title"> {data.label} </p>
+      <div className="card__info">
+        <p className="card__value"> {data.value} </p>
+        <p className="card__title"> {data.label} </p>
       </div>
     </div>
   );
