@@ -1,0 +1,34 @@
+.session-duration-chart {
+  width: 240px;
+  height: 233px;
+  border-radius: 6px;
+  // overflow: hidden;
+  position: relative;
+  @media (max-width: 1300px) {
+    width: 170px;
+    height: 170px;
+  }
+
+  &__title {
+    width: 147px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    opacity: 0.5;
+  }
+
+  &__XAxis {
+    width: 100%;
+    height: 50px;
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 1300px) {
+  .radar-container {
+    .recharts-wrapper svg {
+      width: 170px;
+      height: 170px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "./utils/global.scss";
+@import "./utils/variables.scss";
+
+@import "./layout/header.scss";
+@import "./layout/main.scss";
+@import "./layout/aside.scss";
+
+@import "./components/dailyActivityChart.scss";
+@import "./components/greetingHeader.scss";
+@import "./components/nutritionInfoList";
+@import "./components/performanceRadar.scss";
+@import "./components/radialScoreChart.scss";
+@import "./components/sessionDurationChart.scss";
+
+@import "./pages/dashboard.scss";

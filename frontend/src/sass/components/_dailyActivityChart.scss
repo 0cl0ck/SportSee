@@ -1,0 +1,21 @@
+.barChart {
+  position: relative;
+  width: 840px;
+  height: 260px;
+  @media (max-width: 1300px) {
+    width: 650px;
+  }
+
+  &__title {
+    position: absolute;
+  }
+
+  &__toolTip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 65px;
+  }
+}
