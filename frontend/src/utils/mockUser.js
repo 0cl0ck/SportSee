@@ -1,33 +1,61 @@
 const dailyActivityDataMock = [
-  { day: 1, poids: 68, calories: 50 },
-  { day: 2, poids: 120.5, calories: 45 },
-  { day: 3, poids: 67.5, calories: 100 },
-  { day: 4, poids: 61.5, calories: 150 },
-  { day: 5, poids: 53.5, calories: 25 },
-  { day: 6, poids: 10.5, calories: 35 },
-  { day: 7, poids: 66.5, calories: 60 },
+  {
+    day: "2020-07-01",
+    kilogram: 90,
+    calories: 240,
+  },
+  {
+    day: "2020-07-02",
+    kilogram: 87,
+    calories: 220,
+  },
+  {
+    day: "2020-07-03",
+    kilogram: 85,
+    calories: 280,
+  },
+  {
+    day: "2020-07-04",
+    kilogram: 82,
+    calories: 500,
+  },
+  {
+    day: "2020-07-05",
+    kilogram: 79,
+    calories: 160,
+  },
+  {
+    day: "2020-07-06",
+    kilogram: 81,
+    calories: 162,
+  },
+  {
+    day: "2020-07-07",
+    kilogram: 78,
+    calories: 390,
+  },
 ];
 
 const intensityDataMock = [
-  { subject: "Intensité", A: 50, fullMark: 150 },
-  { subject: "Vitesse", A: 110, fullMark: 150 },
-  { subject: "Force", A: 70, fullMark: 150 },
-  { subject: "Endurance", A: 90, fullMark: 150 },
-  { subject: "Energie", A: 100, fullMark: 150 },
-  { subject: "Cardio", A: 80, fullMark: 150 },
+  { kind: "Intensité", value: 50 },
+  { kind: "Vitesse", value: 110 },
+  { kind: "Force", value: 70 },
+  { kind: "Endurance", value: 90 },
+  { kind: "Energie", value: 100 },
+  { kind: "Cardio", value: 80 },
 ];
 
 const activityDataMock = [
-  { day: "L", activityDuration: 68 },
-  { day: "M", activityDuration: 120.5 },
-  { day: "Me", activityDuration: 67.5 },
-  { day: "J", activityDuration: 61.5 },
-  { day: "V", activityDuration: 53.5 },
-  { day: "S", activityDuration: 10.5 },
-  { day: "D", activityDuration: 66.5 },
+  { day: "L", sessionLength: 68 },
+  { day: "M", sessionLength: 120.5 },
+  { day: "Me", sessionLength: 67.5 },
+  { day: "J", sessionLength: 61.5 },
+  { day: "V", sessionLength: 53.5 },
+  { day: "S", sessionLength: 10.5 },
+  { day: "D", sessionLength: 66.5 },
 ];
 
-const objectiveScoreDataMock = [{ name: "Score", value: 12, fill: "#FF0000" }];
+const objectiveScoreDataMock = [{ score: 0.12 }];
 
 const nutritionData = [
   {

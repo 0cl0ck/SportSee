@@ -52,7 +52,6 @@ const SessionDurationChart = ({ data }) => {
   const handleChartReady = (e) => {
     setContainerWidth(e.containerWidth);
   };
-
   return (
     <div className="session-duration-chart">
       <ResponsiveContainer>
@@ -89,7 +88,7 @@ const SessionDurationChart = ({ data }) => {
           </defs>
           <Line
             type="natural"
-            dataKey="activityDuration"
+            dataKey="sessionLength"
             stroke="url(#colorUv)"
             strokeWidth={2}
             dot={false}

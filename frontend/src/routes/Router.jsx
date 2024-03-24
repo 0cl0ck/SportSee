@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "../layout/Layout.jsx";
 import HomePage from "../pages/HomePage";
 import Dashboard from "../pages/Dashboard.jsx";
+import { useState } from "react";
+import { MockDataContext } from "../utils/mockDataContext.js";
 
 const BrowserRouter = createBrowserRouter([
   {
@@ -19,5 +21,10 @@ const BrowserRouter = createBrowserRouter([
 ]);
 
 export default function Router() {
-  return <RouterProvider router={BrowserRouter} />;
+  const [useMock, setUseMock] = useState(false);
+  return (
+    <MockDataContext.Provider value={{ useMock, setUseMock }}>
+      <RouterProvider router={BrowserRouter} />
+    </MockDataContext.Provider>
+  );
 }

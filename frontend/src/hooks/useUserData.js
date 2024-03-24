@@ -18,7 +18,7 @@ const useUserData = (userId) => {
     };
 
     fetchData();
-  }, [userId]); // Dépend de userId pour recharger si l'ID change
+  }, [userId]);
 
   return userData;
 };

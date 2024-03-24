@@ -12,6 +12,8 @@ import {
 import "../../sass/components/_radialScoreChart.scss";
 
 const RadialScoreChart = ({ data }) => {
+  const scorePercentage =
+    data && data.length > 0 ? (data[0].score * 100).toFixed(0) : 0;
   return (
     <div className="radial-score-chart">
       <ResponsiveContainer>
@@ -28,14 +30,14 @@ const RadialScoreChart = ({ data }) => {
           <circle cx="50%" cy="50%" fill="white" r="80"></circle>
           <PolarAngleAxis
             type="number"
-            dataKey="value"
-            domain={[0, 100]}
+            dataKey="score"
+            domain={[0, 1]}
             angleAxisId={0}
             tick={false}
           />
-          <RadialBar dataKey="value" cornerRadius={10} fill="#ff0000" />
+          <RadialBar dataKey="score" cornerRadius={10} fill="#ff0000" />
           <text x="50%" y="40%" textAnchor="middle">
-            12%
+            {`${scorePercentage}%`}
           </text>
           <text x="50%" y="50%" textAnchor="middle" fill={"#74798C"}>
             de votre

@@ -9,37 +9,78 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../../sass/components/_dailyActivityChart.scss";
+import { CartesianGrid } from "recharts";
 
 function DailyActivityChart({ data }) {
   return (
-    <div className="bar-chart">
-      <div className="bar-chart__title">Activité quotidienne</div>
-      <ResponsiveContainer width="100%" height={250}>
+    <div className="barChart">
+      <div className="barChart__title">Activité quotidienne</div>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          barGap={8}
+          barSize={7}
+          margin={{
+            top: 20,
+            right: 0,
+            left: 0,
+            bottom: 20,
+          }}
         >
+          <CartesianGrid vertical={false} strokeDasharray="3 3" />
+          <XAxis
+            axisLine={false}
+            tickLine={false}
+            tickMargin={20}
+            tickCount={7}
+            dataKey="day"
+          />
+          <YAxis
+            yAxisId="kilogram"
+            type="number"
+            orientation="right"
+            axisLine={false}
+            tickLine={false}
+            dataKey="kilogram"
+            stroke="#9B9EAC"
+            domain={["dataMin -5", "dataMax +15"]}
+          />
+          <YAxis
+            yAxisId="calories"
+            type="number"
+            domain={["dataMin -160", "dataMax +15"]}
+            hide
+          />
+          <Tooltip />
           <Legend
             iconType="circle"
-            layout="horizontal"
+            iconSize={8}
+            align="right"
             verticalAlign="top"
-            align="center"
+            wrapperStyle={{
+              top: 0,
+              right: 80,
+              marginBottom: "20px",
+            }}
+            formatter={(value) => (
+              <span className="barChart__textColorLegend">{value}</span>
+            )}
           />
-
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
           <Bar
+            barSize={7}
+            dataKey="kilogram"
+            name="Poids (kg)"
+            fill="#282d30"
+            radius={[10, 10, 0, 0]}
+            yAxisId="kilogram"
+          />
+          <Bar
+            barSize={7}
             dataKey="calories"
-            fill="#FF0000"
-            barSize={10}
+            name="Calories brûlées (kCal)"
+            fill="#E60000"
             radius={[10, 10, 0, 0]}
-          />
-          <Bar
-            dataKey="poids"
-            fill="#000000"
-            barSize={10}
-            radius={[10, 10, 0, 0]}
+            yAxisId="calories"
           />
         </BarChart>
       </ResponsiveContainer>
