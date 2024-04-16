@@ -10,6 +10,28 @@ import {
 } from "recharts";
 import "../../sass/components/_dailyActivityChart.scss";
 import { CartesianGrid } from "recharts";
+import PropTypes from "prop-types";
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="barChart__toolTip">
+        <p>{`${payload[0].value}kg`}</p>
+        <p>{`${payload[1].value}Kcal`}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    })
+  ),
+};
 
 function DailyActivityChart({ data }) {
   return (
@@ -51,7 +73,7 @@ function DailyActivityChart({ data }) {
             domain={["dataMin -160", "dataMax +15"]}
             hide
           />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Legend
             iconType="circle"
             iconSize={8}
@@ -87,5 +109,15 @@ function DailyActivityChart({ data }) {
     </div>
   );
 }
+
+DailyActivityChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number,
+    })
+  ).isRequired,
+};
 
 export default DailyActivityChart;

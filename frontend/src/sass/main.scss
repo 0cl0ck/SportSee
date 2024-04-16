@@ -5,6 +5,7 @@
 @import "./layout/main.scss";
 @import "./layout/aside.scss";
 
+@import "./components/button.scss";
 @import "./components/dailyActivityChart.scss";
 @import "./components/greetingHeader.scss";
 @import "./components/nutritionInfoList";
@@ -13,3 +14,4 @@
 @import "./components/sessionDurationChart.scss";
 
 @import "./pages/dashboard.scss";
+@import "./pages/homepage.scss";

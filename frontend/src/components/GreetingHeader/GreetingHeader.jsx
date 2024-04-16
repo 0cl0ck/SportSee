@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../../sass/components/_greetingHeader.scss";
+
 function GreetingHeader({ name }) {
   return (
     <header className="greeting-header">
@@ -10,5 +12,9 @@ function GreetingHeader({ name }) {
     </header>
   );
 }
+
+GreetingHeader.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default GreetingHeader;

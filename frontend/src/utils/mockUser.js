@@ -1,58 +1,60 @@
+const nameMock = "John Doe";
+
 const dailyActivityDataMock = [
   {
-    day: "2020-07-01",
+    day: "1",
     kilogram: 90,
     calories: 240,
   },
   {
-    day: "2020-07-02",
+    day: "2",
     kilogram: 87,
     calories: 220,
   },
   {
-    day: "2020-07-03",
+    day: "3",
     kilogram: 85,
     calories: 280,
   },
   {
-    day: "2020-07-04",
+    day: "4",
     kilogram: 82,
     calories: 500,
   },
   {
-    day: "2020-07-05",
+    day: "5",
     kilogram: 79,
     calories: 160,
   },
   {
-    day: "2020-07-06",
+    day: "6",
     kilogram: 81,
     calories: 162,
   },
   {
-    day: "2020-07-07",
+    day: "7",
     kilogram: 78,
     calories: 390,
   },
 ];
 
 const intensityDataMock = [
+  { kind: "Endurance", value: 90 },
+  { kind: "Force", value: 70 },
+  { kind: "Energie", value: 100 },
   { kind: "Intensité", value: 50 },
   { kind: "Vitesse", value: 110 },
-  { kind: "Force", value: 70 },
-  { kind: "Endurance", value: 90 },
-  { kind: "Energie", value: 100 },
   { kind: "Cardio", value: 80 },
 ];
 
 const activityDataMock = [
-  { day: "L", sessionLength: 68 },
-  { day: "M", sessionLength: 120.5 },
-  { day: "Me", sessionLength: 67.5 },
-  { day: "J", sessionLength: 61.5 },
-  { day: "V", sessionLength: 53.5 },
-  { day: "S", sessionLength: 10.5 },
-  { day: "D", sessionLength: 66.5 },
+  { day: 1, sessionLength: 68 },
+  { day: 2, sessionLength: 120.5 },
+  { day: 3, sessionLength: 67.5 },
+  { day: 4, sessionLength: 61.5 },
+  { day: 5, sessionLength: 53.5 },
+  { day: 6, sessionLength: 10.5 },
+  { day: 7, sessionLength: 48.5 },
 ];
 
 const objectiveScoreDataMock = [{ score: 0.12 }];
@@ -89,6 +91,7 @@ const nutritionData = [
 ];
 
 export {
+  nameMock,
   dailyActivityDataMock,
   intensityDataMock,
   activityDataMock,

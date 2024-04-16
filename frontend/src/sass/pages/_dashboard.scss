@@ -11,14 +11,19 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 4rem;
+    @media (max-width: 1300px) {
+      margin-top: 2rem;
+    }
   }
 
   &__charts--container {
-    width: 840px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     font-size: 14px;
+    justify-content: space-between;
     @media (max-width: 1300px) {
       width: 520px;
     }
@@ -36,12 +41,18 @@
     align-items: center;
     justify-content: center;
     width: 180px;
-    height: 500px;
     margin-left: 100px;
     @media (max-width: 1300px) {
       width: 150px;
-      margin-left: 50px;
+      margin-left: 80px;
     }
+  }
+
+  &-cards__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 

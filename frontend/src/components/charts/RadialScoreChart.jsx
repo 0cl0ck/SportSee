@@ -3,11 +3,9 @@ import {
   RadialBarChart,
   RadialBar,
   PolarAngleAxis,
-  Legend,
-  Text,
-  Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
 
 import "../../sass/components/_radialScoreChart.scss";
 
@@ -49,6 +47,14 @@ const RadialScoreChart = ({ data }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+RadialScoreChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      score: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default RadialScoreChart;

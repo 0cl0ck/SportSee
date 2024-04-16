@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   LineChart,
   Line,
@@ -30,9 +31,17 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-// Custom cursor component
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number,
+    })
+  ),
+};
+
 const CustomCursor = (props) => {
-  const { height, points, width } = props;
+  const { points, width } = props;
   const x = points[0].x;
   return (
     <rect
@@ -46,12 +55,16 @@ const CustomCursor = (props) => {
   );
 };
 
-const SessionDurationChart = ({ data }) => {
-  const [containerWidth, setContainerWidth] = useState(0);
+CustomCursor.propTypes = {
+  width: PropTypes.number,
+  points: PropTypes.arrayOf(
+    PropTypes.shape({
+      x: PropTypes.number,
+    })
+  ),
+};
 
-  const handleChartReady = (e) => {
-    setContainerWidth(e.containerWidth);
-  };
+const SessionDurationChart = ({ data }) => {
   return (
     <div className="session-duration-chart">
       <ResponsiveContainer>
@@ -62,7 +75,6 @@ const SessionDurationChart = ({ data }) => {
             backgroundColor: "#FF0000",
             borderRadius: "5px",
           }}
-          onMouseEnter={handleChartReady}
         >
           <XAxis
             dataKey="day"
@@ -121,6 +133,15 @@ const SessionDurationChart = ({ data }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+SessionDurationChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string,
+      sessionLength: PropTypes.number,
+    })
+  ).isRequired,
 };
 
 export default SessionDurationChart;
