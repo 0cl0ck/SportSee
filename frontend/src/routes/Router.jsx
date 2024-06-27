@@ -4,7 +4,8 @@ import Layout from "../layout/Layout.jsx";
 import HomePage from "../pages/HomePage";
 import Dashboard from "../pages/Dashboard.jsx";
 import { useState } from "react";
-import { MockDataContext } from "../utils/mockDataContext.js";
+import { MockDataContext } from "../mock/mockDataContext.js";
+import ErrorPage from "../pages/ErrorPage.jsx";
 
 const BrowserRouter = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const BrowserRouter = createBrowserRouter([
         element: <HomePage />,
       },
       { path: "/user/:userId", element: <Dashboard /> },
+      { path: "/error", element: <ErrorPage /> },
     ],
   },
 ]);

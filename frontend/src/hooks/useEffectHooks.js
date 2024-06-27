@@ -6,7 +6,7 @@ import {
   getUserActivity,
   getUserAverageSessions,
   getPerformanceData,
-} from "../utils/apiService";
+} from "../api/apiService";
 
 import {
   useUserData,
@@ -27,17 +27,17 @@ import {
   nutritionData,
   objectiveScoreDataMock,
   nameMock,
-} from "../utils/mockUser";
+} from "../mock/mockUser";
 
 // Importation des fonctions de traitement de données
 import {
   convertDayNumberToLetter,
   transformPerformanceData,
   transformAndSetNutritionData,
-} from "../utils/dataTransformations";
+} from "../model/dataTransformations";
 
 // Hook personnalisé pour récupérer et gérer les données de l'utilisateur
-export const useFetchData = () => {
+export const useFetchData = (setError) => {
   const { userId } = useParams();
   const [userData, setUserData] = useUserData();
   const [userName, setUserName] = useUserName();
@@ -102,11 +102,12 @@ export const useFetchData = () => {
         transformAndSetNutritionData(data.data.keyData, setNutritionInfo);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
+        setError(true);
       }
     };
 
     fetchData();
-  }, [userId]);
+  }, [userId, useMock, setError]);
 
   return {
     userData,

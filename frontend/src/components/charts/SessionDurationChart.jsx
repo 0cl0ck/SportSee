@@ -65,11 +65,20 @@ CustomCursor.propTypes = {
 };
 
 const SessionDurationChart = ({ data }) => {
+  if (!data || data.length === 0) {
+    return null;
+  }
+  // Ajouter des valeurs fictives au début et à la fin des données
+  const extendedData = [
+    { day: "", sessionLength: data[0].sessionLength }, // Valeur fictive au début
+    ...data,
+    { day: "", sessionLength: data[data.length - 1].sessionLength }, // Valeur fictive à la fin
+  ];
   return (
     <div className="session-duration-chart">
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={extendedData}
           margin={{ top: 80, right: 0, left: 0, bottom: 40 }}
           style={{
             backgroundColor: "#FF0000",
@@ -82,7 +91,6 @@ const SessionDurationChart = ({ data }) => {
             tickLine={false}
             tickMargin={30}
             tick={{ fill: "#ff8080", fontSize: 14 }}
-            padding={{ left: 10, right: 10 }}
           />
           <YAxis
             axisLine={false}

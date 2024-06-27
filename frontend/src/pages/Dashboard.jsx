@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFetchData } from "../hooks/useEffectHooks";
+import { useNavigate } from "react-router-dom";
 
 import GreetingHeader from "../components/GreetingHeader/GreetingHeader";
 import DailyActivityChart from "../components/charts/DailyActivityChart";
@@ -25,6 +26,8 @@ import "../sass/pages/_dashboard.scss";
  */
 
 function Dashboard() {
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const {
     userName,
     dailyActivityData,
@@ -32,12 +35,18 @@ function Dashboard() {
     performanceData,
     scoreData,
     nutritionInfo,
-  } = useFetchData();
+  } = useFetchData(setError);
 
   // Assure que userName est une chaîne
   const userNameString = Array.isArray(userName)
     ? userName.join(" ")
     : userName;
+
+  useEffect(() => {
+    if (error) {
+      navigate("/error");
+    }
+  }, [error, navigate]);
 
   return (
     <div className="dashboard">

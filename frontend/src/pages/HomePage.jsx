@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { MockDataContext } from "../utils/mockDataContext.js";
+import { MockDataContext } from "../mock/mockDataContext.js";
 
 /**
  * HomePage est le composant de page d'accueil de l'application. Il permet à l'utilisateur
