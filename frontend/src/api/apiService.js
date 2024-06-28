@@ -1,12 +1,14 @@
+import UserData from "../models/UserData";
+
+// getUserData utilise une modélisation des données depuis le fichier UserData.js
 const getUserData = async (userId) => {
   const response = await fetch(`http://localhost:3000/user/${userId}`);
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
   const data = await response.json();
-  return data;
+  return new UserData(data.data);
 };
-
 export { getUserData };
 
 const getUserActivity = async (userId) => {

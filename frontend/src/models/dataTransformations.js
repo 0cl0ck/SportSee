@@ -47,37 +47,53 @@ export const transformPerformanceData = (data, kindMapping) => {
 };
 
 // Définit les informations nutritionnelles dans l'état
-export const transformAndSetNutritionData = (keyData, setNutritionInfo) => {
-  const nutritionInfo = [
+export const transformAndSetNutritionData = (userData, setNutritionInfo) => {
+  const nutritionData = [
     {
-      id: `${keyData.calorieCount}`,
+      id: "calories",
       label: "Calories",
-      value: `${keyData.calorieCount}kCal`,
+      value: `${userData.calorieCount}kCal`,
       iconPath: "/energy.svg",
       bgColor: "#FBEAEA",
     },
     {
-      id: `${keyData.proteinCount}`,
+      id: "proteins",
       label: "Protéines",
-      value: `${keyData.proteinCount}g`,
+      value: `${userData.proteinCount}g`,
       iconPath: "/chicken.svg",
       bgColor: "#E9F4FB",
     },
     {
-      id: `${keyData.carbohydrateCount}`,
+      id: "carbohydrates",
       label: "Glucides",
-      value: `${keyData.carbohydrateCount}g`,
+      value: `${userData.carbohydrateCount}g`,
       iconPath: "/apple.svg",
       bgColor: "#FAF6E5",
     },
     {
-      id: `${keyData.lipidCount}`,
+      id: "lipids",
       label: "Lipides",
-      value: `${keyData.lipidCount}g`,
+      value: `${userData.lipidCount}g`,
       iconPath: "/cheeseburger.svg",
       bgColor: "#FBEAEF",
     },
   ];
+  setNutritionInfo(nutritionData);
+};
 
-  setNutritionInfo(nutritionInfo); // Mise à jour de l'information nutritionnelle dans l'état
+// Nouvelle fonction pour formater les données de session
+export const formatSessionData = (sessions) => {
+  return sessions.map((item) => {
+    const dayOnly = item.day.split("-")[2];
+    const formattedDay = parseInt(dayOnly, 10);
+    return { ...item, day: formattedDay.toString() };
+  });
+};
+
+// Nouvelle fonction pour formater les données de session moyenne
+export const formatAverageSessionData = (sessions) => {
+  return sessions.map((session) => ({
+    ...session,
+    day: convertDayNumberToLetter(session.day),
+  }));
 };

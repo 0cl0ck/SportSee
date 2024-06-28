@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import {
   getUserData,
   getUserActivity,
@@ -31,10 +30,11 @@ import {
 
 // Importation des fonctions de traitement de données
 import {
-  convertDayNumberToLetter,
   transformPerformanceData,
   transformAndSetNutritionData,
-} from "../model/dataTransformations";
+  formatSessionData,
+  formatAverageSessionData,
+} from "../models/dataTransformations";
 
 // Hook personnalisé pour récupérer et gérer les données de l'utilisateur
 export const useFetchData = (setError) => {
@@ -46,7 +46,7 @@ export const useFetchData = (setError) => {
   const [averageSessionData, setAverageSessionData] = useAverageSessionData();
   const [scoreData, setScoreData] = useScoreData();
   const [performanceData, setPerformanceData] = usePerformanceData();
-  const useMock = useMockDataContext(); // Basculement pour utiliser les données simulées
+  const useMock = useMockDataContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,12 +54,7 @@ export const useFetchData = (setError) => {
         // Utiliser les données simulées pour les tests ou le développement
         setUserName(nameMock);
         setDailyActivityData(dailyActivityDataMock);
-        setAverageSessionData(
-          activityDataMock.map((session) => ({
-            ...session,
-            day: convertDayNumberToLetter(session.day),
-          }))
-        );
+        setAverageSessionData(formatAverageSessionData(activityDataMock));
         setScoreData(objectiveScoreDataMock);
         setPerformanceData(intensityDataMock);
         setNutritionInfo(nutritionData);
@@ -78,28 +73,21 @@ export const useFetchData = (setError) => {
         );
 
         // Formatage des données de session pour afficher uniquement le numéro du jour
-        const formattedData = activityData.data.sessions.map((item) => {
-          const dayOnly = item.day.split("-")[2];
-          const formattedDay = parseInt(dayOnly, 10);
-
-          return { ...item, day: formattedDay.toString() };
-        });
+        const formattedData = formatSessionData(activityData.data.sessions);
 
         // Définition des données transformées dans l'état
-        setUserData(data.data);
-        setUserName(data.data.userInfos.firstName);
+
+        setUserData(data);
+        setUserName(data.firstName);
         setDailyActivityData(formattedData);
         setAverageSessionData(
-          averageSessionData.data.sessions.map((session) => ({
-            ...session,
-            day: convertDayNumberToLetter(session.day),
-          }))
+          formatAverageSessionData(averageSessionData.data.sessions)
         );
-        setScoreData([{ score: data.data.todayScore ?? data.data.score }]);
+        setScoreData([{ score: data.todayScore }]);
         setPerformanceData(transformedPerformanceData);
 
         // Définition des informations nutritionnelles dans l'état
-        transformAndSetNutritionData(data.data.keyData, setNutritionInfo);
+        transformAndSetNutritionData(data, setNutritionInfo);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
         setError(true);
